@@ -1,6 +1,6 @@
 {
   "name": "binary-op-arbitrary-precision",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Binary operation abstraction for core-arbitrary-precision",
   "main": "src/index.js",
   "scripts": {
