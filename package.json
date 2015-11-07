@@ -1,0 +1,38 @@
+{
+  "name": "binary-op-arbitrary-precision",
+  "version": "0.0.0",
+  "description": "Binary operation abstraction for core-arbitrary-precision",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javiercejudo/binary-op-arbitrary-precision.git"
+  },
+  "keywords": [
+    "feature scaling",
+    "normalisation",
+    "normalization",
+    "scale",
+    "rescale"
+  ],
+  "author": "Javier Cejudo <javier@javiercejudo.com> (http://www.javiercejudo.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javiercejudo/binary-op-arbitrary-precision/issues"
+  },
+  "homepage": "https://github.com/javiercejudo/binary-op-arbitrary-precision#readme",
+  "devDependencies": {
+    "core-arbitrary-precision": "^1.0.0",
+    "floating": "^1.2.0",
+    "floating-adapter": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-coverage": "^0.3.38",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-istanbul": "^0.10.2",
+    "gulp-mocha": "^2.1.3",
+    "rimraf": "^2.4.3",
+    "should": "^7.1.1"
+  }
+}
