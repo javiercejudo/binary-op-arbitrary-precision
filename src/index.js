@@ -10,7 +10,7 @@ module.exports = function binaryOpExtender(Decimal, opName, protoName) {
   assert(adapter.hasOwnProperty(opName), new Error('Unsupported operation'));
 
   Decimal.prototype[protoName || opName] = function(x) {
-    return new Decimal(adapter[opName](this.val(), x.val()).toString());
+    return new Decimal(adapter.toString(adapter[opName](this.val(), x.val())));
   };
 
   return Decimal;
