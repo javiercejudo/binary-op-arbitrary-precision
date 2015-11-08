@@ -18,7 +18,7 @@ Binary operation abstraction for [core-arbitrary-precision](https://github.com/j
 
 ```js
 var adapter = require('floating-adapter');
-var Decimal = require('linear-arbitrary-precision')(adapter);
+var Decimal = require('core-arbitrary-precision')(adapter);
 var binaryOpFactory = require('binary-op-arbitrary-precision');
 
 Decimal = binaryOpFactory(Decimal, 'plus');
