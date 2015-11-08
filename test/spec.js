@@ -19,4 +19,10 @@ describe('plus', function() {
 
     new Decimal('1').div(new Decimal('2')).toString().should.be.exactly('0.5');
   });
+
+  it('should throw when the given method does not exist', function() {
+    (function() {
+      binaryOpExtender(Decimal, 'nonExistentMethod');
+    }).should.throw('Unsupported operation');
+  });
 });
