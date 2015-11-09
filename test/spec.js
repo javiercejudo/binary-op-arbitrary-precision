@@ -10,9 +10,9 @@ var binaryOpExtender = require('../src/');
 
 describe('plus', function() {
   it('should add a given number', function() {
-    Decimal = binaryOpExtender(Decimal, 'plus');
-    Decimal = binaryOpExtender(Decimal, 'plus', '+');
-    Decimal = binaryOpExtender(Decimal, 'div');
+    binaryOpExtender(Decimal, 'plus');
+    binaryOpExtender(Decimal, 'plus', '+');
+    binaryOpExtender(Decimal, 'div');
 
     new Decimal('2').plus(new Decimal('3')).toString().should.be.exactly('5');
     new Decimal('2')['+'](new Decimal('3')).toString().should.be.exactly('5');
@@ -21,8 +21,10 @@ describe('plus', function() {
   });
 
   it('should throw when the given method does not exist', function() {
+    binaryOpExtender(Decimal, 'nonExistentMethod');
+
     (function() {
-      binaryOpExtender(Decimal, 'nonExistentMethod');
+      new Decimal('2').nonExistentMethod(new Decimal('3'));
     }).should.throw('Unsupported operation');
   });
 });

@@ -7,11 +7,17 @@ var assert = require('assert-error');
 module.exports = function binaryOpExtender(Decimal, opName, protoName) {
   var adapter = Decimal.getAdapter();
 
-  assert(adapter.hasOwnProperty(opName), new Error('Unsupported operation'));
-
-  Decimal.prototype[protoName || opName] = function(x) {
-    return new Decimal(adapter.toString(adapter[opName](this.val(), x.val())));
+  var implementation = function() {
+    throw new Error('Unsupported operation');
   };
+
+  if (adapter.hasOwnProperty(opName)) {
+    implementation = function(x) {
+      return new Decimal(adapter.toString(adapter[opName](this.val(), x.val())));
+    };
+  }
+
+  Decimal.prototype[protoName || opName] = implementation;
 
   return Decimal;
 };
