@@ -2,8 +2,6 @@
 
 'use strict';
 
-var assert = require('assert-error');
-
 module.exports = function binaryOpExtender(Decimal, opName, protoName) {
   var adapter = Decimal.getAdapter();
 
