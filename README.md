@@ -22,10 +22,10 @@ var Decimal = require('core-arbitrary-precision')(adapter);
 var binaryOpFactory = require('binary-op-arbitrary-precision');
 
 Decimal = binaryOpFactory(Decimal, 'plus');
-Decimal = binaryOpFactory(Decimal, 'plus', 'add');
+Decimal = binaryOpFactory(Decimal, 'plus', '+');
 
 new Decimal('2').plus(new Decimal('3')).valueOf(); // => 5
-new Decimal('2').add(new Decimal('3')).valueOf(); // => 5
+new Decimal('2')['+'](new Decimal('3')).valueOf(); // => 5
 ```
 
 See [spec](test/spec.js).
