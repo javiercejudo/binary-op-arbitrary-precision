@@ -2,12 +2,13 @@
 
 'use strict';
 
+function unsupported() {
+  throw new Error('Unsupported operation');
+}
+
 module.exports = function binaryOpExtender(Decimal, opName, protoName) {
   var adapter = Decimal.getAdapter();
-
-  var implementation = function() {
-    throw new Error('Unsupported operation');
-  };
+  var implementation = unsupported;
 
   if (adapter.hasOwnProperty(opName)) {
     implementation = function(x) {
