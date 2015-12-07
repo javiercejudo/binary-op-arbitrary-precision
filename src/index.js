@@ -2,13 +2,13 @@
 
 'use strict';
 
-function unsupported() {
-  throw new Error('Unsupported operation');
-}
+var unsupported = require('unsupported')();
+var isUndefined = require('lodash.isundefined');
 
 module.exports = function binaryOpExtender(Decimal, opName, protoName) {
   var adapter = Decimal.getAdapter();
   var implementation = unsupported;
+  var name = isUndefined(protoName) ? opName : protoName;
 
   if (adapter.hasOwnProperty(opName)) {
     implementation = function(x) {
@@ -16,7 +16,7 @@ module.exports = function binaryOpExtender(Decimal, opName, protoName) {
     };
   }
 
-  Decimal.prototype[protoName || opName] = implementation;
+  Decimal.prototype[name] = implementation;
 
   return Decimal;
 };
