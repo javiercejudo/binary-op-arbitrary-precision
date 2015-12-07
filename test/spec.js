@@ -8,8 +8,8 @@ var adapter = require('floating-adapter');
 var Decimal = require('core-arbitrary-precision')(adapter);
 var binaryOpExtender = require('../src/');
 
-describe('plus', function() {
-  it('should add a given number', function() {
+describe('binary operation', function() {
+  it('should do something with two values', function() {
     binaryOpExtender(Decimal, 'plus');
     binaryOpExtender(Decimal, 'plus', '+');
     binaryOpExtender(Decimal, 'div');
