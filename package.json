@@ -22,7 +22,7 @@
   "homepage": "https://github.com/javiercejudo/binary-op-arbitrary-precision#readme",
   "devDependencies": {
     "core-arbitrary-precision": "^2.0.0",
-    "floating": "^1.2.0",
+    "floating": "^2.0.0",
     "floating-adapter": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-coverage": "^0.3.38",
