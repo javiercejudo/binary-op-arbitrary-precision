@@ -23,7 +23,7 @@
   "devDependencies": {
     "core-arbitrary-precision": "^2.0.0",
     "floating": "^2.0.0",
-    "floating-adapter": "^1.2.0",
+    "floating-adapter": "^1.4.0",
     "gulp": "^3.9.0",
     "gulp-coverage": "^0.3.38",
     "gulp-coveralls": "^0.1.4",
