@@ -4,15 +4,24 @@
 
 var unsupported = require('unsupported')();
 var isUndefined = require('lodash.isundefined');
+var identity = require('lodash.identity');
 
-module.exports = function binaryOpExtender(Decimal, opName, protoName) {
+var newDecimalTransformFactory = function newDecimalTransformFactory(Decimal, adapter) {
+  return function(x) {
+    return new Decimal(adapter.toString(x));
+  };
+};
+
+var binaryOpExtenderRaw = function binaryOpExtender(transform, Decimal, opName, protoName) {
   var adapter = Decimal.getAdapter();
   var implementation = unsupported;
   var name = isUndefined(protoName) ? opName : protoName;
 
-  if (adapter.hasOwnProperty(opName)) {
+  transform = transform || newDecimalTransformFactory(Decimal, adapter);
+
+  if (Object.hasOwnProperty.call(adapter, opName)) {
     implementation = function(x) {
-      return new Decimal(adapter.toString(adapter[opName](this.val(), x.val())));
+      return transform(adapter[opName](this.val(), x.val()));
     };
   }
 
@@ -20,3 +29,9 @@ module.exports = function binaryOpExtender(Decimal, opName, protoName) {
 
   return Decimal;
 };
+
+var binaryOpExtender = binaryOpExtenderRaw.bind(undefined, undefined);
+binaryOpExtender.asIs = binaryOpExtenderRaw.bind(undefined, identity);
+binaryOpExtender.raw = binaryOpExtenderRaw;
+
+module.exports = binaryOpExtender;
